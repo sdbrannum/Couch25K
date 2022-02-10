@@ -11,26 +11,29 @@ import SwiftUI
 
 struct WorkoutActiveView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var workoutTimer: WorkoutTimer
+    // @ObservedObject var workoutTimer: WorkoutTimer
+    @ObservedObject var workoutTracker: WorkoutTracker
     var exercises: [ExerciseItem]    
     
     let dateFormatter = DateComponentsFormatter()
     
     
     init(exercises: [ExerciseItem]) {
+        print("init workout active view")
         self.exercises = exercises
-        self.workoutTimer = WorkoutTimer(exercises: exercises)
+        // self.workoutTimer = WorkoutTimer(exercises: exercises)
+        self.workoutTracker = WorkoutTracker(exercises: exercises)
     }
     
     
     var totalTimeRemainingString : String {
-        return dateFormatter.string(from: self.workoutTimer.workoutTimeLeft)!
+        return dateFormatter.string(from: self.workoutTracker.workoutTimeLeft)!
     }
     
     var currentActivityTimeString : String {
         get {
-            if let activity = self.workoutTimer.activity {
-                return "\(activity): \(dateFormatter.string(from: self.workoutTimer.activityTimeLeft)!)"
+            if let exerciseName = self.workoutTracker.exerciseName {
+                return "\(exerciseName): \(dateFormatter.string(from: self.workoutTracker.exerciseTimeLeft)!)"
             }
             return ""
         }
@@ -48,7 +51,7 @@ struct WorkoutActiveView: View {
             
             HStack {
                Button(action: {
-                   self.workoutTimer.cancel()
+                   self.workoutTracker.cancel()
                    dismiss()
                    
                 }) {
@@ -58,14 +61,14 @@ struct WorkoutActiveView: View {
                 }
            
                 
-                if workoutTimer.active {
-                    Button(action: { self.workoutTimer.pause() }) {
+                if workoutTracker.active {
+                    Button(action: { self.workoutTracker.pause() }) {
                         Image(systemName: "pause.fill")
                             .foregroundColor(.gray)
                         // Text("Pause")
                     }
                 } else {
-                    Button(action: { self.workoutTimer.start() }) {
+                    Button(action: { self.workoutTracker.start() }) {
                         Image(systemName: "play")
                             .foregroundColor(.green)
                         // Text("Resume")
@@ -73,10 +76,10 @@ struct WorkoutActiveView: View {
                 }
             }
             .onAppear {
-                self.workoutTimer.start()
-                self.startPedometer()
+                self.workoutTracker.start()
+                // self.startPedometer()
             }
-            //.onDisappear { self.workoutTimer.stop() }
+            .onDisappear { self.workoutTracker.cancel() }
         }
 
     }

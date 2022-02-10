@@ -1,8 +1,8 @@
 //
-//  WorkoutTimer.swift
+//  WorkoutTracker.swift
 //  Couch25K WatchKit Extension
 //
-//  Created by Steven Brannum on 2/8/22.
+//  Created by Steven Brannum on 2/9/22.
 //
 
 import Foundation
@@ -11,85 +11,119 @@ import HealthKit
 import AVFAudio
 import CoreMotion
 
-
-// TODO: rename to workout tracker, extract countdown timer
-class WorkoutTimer : ObservableObject {
-    private var timer: Timer?
-    private var exercises: [ExerciseItem]
+class WorkoutTracker : ObservableObject {
     private let healthStore = HKHealthStore()
     private let pedometer = CMPedometer()
-    private let totalWorkoutTime: TimeInterval
+    private let exercises: [ExerciseItem]
     private let startDate: Date = Date()
+    private let countdownTimer: CountdownTimer
+    private let totalWorkoutTime: TimeInterval
     
     @Published var workoutTimeLeft: TimeInterval = 0.0
-    @Published var activityTimeLeft: TimeInterval = 0.0
-    @Published var activity: String? = nil
+    @Published var exerciseTimeLeft: TimeInterval = 0.0
+    @Published var exerciseName: String? = nil
     @Published var active: Bool = false
+        
+    var currentExerciseIdx : Int = -1 {
+        didSet {
+            self.exerciseName = self.currentExercise.exercise.description
+            self.exerciseTimeLeft = self.currentExercise.duration
+            self.countdownTimer.setExerciseTimeLeft(time: self.exerciseTimeLeft)
+        }
+    }
+    
+    var currentExercise : ExerciseItem {
+        get {
+            return self.exercises[self.currentExerciseIdx]
+        }
+    }
     
     init(exercises: [ExerciseItem]) {
         self.exercises = exercises
         self.totalWorkoutTime = exercises.reduce(0) { acc, curr in acc + curr.duration }
         self.workoutTimeLeft = totalWorkoutTime
-        self.setNextActivity()
+        self.countdownTimer = CountdownTimer(workoutTotalTime: self.totalWorkoutTime)
+        self.setNextExercise()
     }
     
     func start() {
-        // healthStore.start()
-        // self.startPedometer()
-        guard timer != nil else {
-            active = true
-            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { t in
-                self.workoutTimeLeft -= 0.1
-                self.activityTimeLeft -= 0.1
-                
-                if (self.activityTimeLeft < 0.1) {
-                    self.setNextActivity()
-                }
-                
-                if (self.workoutTimeLeft < 0.1) {
-                    self.activityTimeLeft = 0.0
-                    self.workoutTimeLeft = 0.0
-                    self.finish()
-                    return
-                }
+        self.active = true
+        self.countdownTimer.start() { exerciseTimeLeft, workoutTimeLeft in
+            self.exerciseTimeLeft = exerciseTimeLeft
+            self.workoutTimeLeft = workoutTimeLeft
+            if exerciseTimeLeft == 0.0 {
+                self.setNextExercise()
             }
-            return
         }
     }
+
     
     func pause() {
-        active = false
-        timer?.invalidate()
-        timer = nil
+        self.active = false
+        self.countdownTimer.stop()
     }
     
     func cancel() {
         self.pause()
+        self.reset()
     }
 
+    ///
+    /// Finish workout and save to healthstore
+    ///
     func finish() {
-        active = false
-        timer?.invalidate()
-        timer = nil
+        self.active = false
+        self.countdownTimer.stop()
         // healthStore.stop()
-        saveToHealthStore()
+        self.saveToHealthStore()
+    }
+    
+    /**
+     TODO: when the view is dismissed and you go to the detail view and then start it again
+     the active view still shows the previous session.
+     
+     if you dismiss to the detail view and then go to the content view and back into a workout
+     the initializer runs again.
+     
+     need to investigate how to dismiss to the content view
+     */
+    private func reset() {
+        self.currentExerciseIdx = 0
+        self.workoutTimeLeft = self.totalWorkoutTime
     }
 
-    
-    func setNextActivity() {
-        if self.exercises.count > 0 {
-            WKInterfaceDevice.current().play(.stop)
-            WKInterfaceDevice.current().play(.start)
-            let exercise = self.exercises.remove(at: 0)
-            self.activity = exercise.exercise.description
-            self.activityTimeLeft = exercise.duration
-        } else {
+    ///
+    /// Activate the next exercise in the workout
+    ///
+    private func setNextExercise() {
+        if self.currentExerciseIdx == (self.exercises.count - 1) {
             WKInterfaceDevice.current().play(.stop)
             self.finish()
+        } else {
+            WKInterfaceDevice.current().play(.stop)
+            WKInterfaceDevice.current().play(.start)
+            self.currentExerciseIdx += 1
         }
+//
+//
+//        if self.exercises.count > 0 {
+//            WKInterfaceDevice.current().play(.stop)
+//            WKInterfaceDevice.current().play(.start)
+//            let exercise = self.exercises.remove(at: 0)
+//            let x = self.exercises.
+//            self.exerciseName = exercise.exercise.description
+//            self.exerciseTimeLeft = exercise.duration
+//            self.countdownTimer.setExerciseTimeLeft(time: self.exerciseTimeLeft)
+//        } else {
+//            WKInterfaceDevice.current().play(.stop)
+//            self.finish()
+//        }
     }
     
-    func saveToHealthStore() {
+    ///
+    /// Save workout data to HealthStore
+    ///
+    private func saveToHealthStore() {
         let endDate = Date()
         getPedometerDataForWorkout(startDate: self.startDate, endDate: endDate)
         return
@@ -138,6 +172,9 @@ class WorkoutTimer : ObservableObject {
     }
     
     // TODO: maybe switch out with audio clips using AVFoundation and AVAudioPlayer
+    ///
+    /// Use Speech Synthesis to say a phrase
+    ///
     func annouce(phrase: String) {
         // Create an utterance.
         let utterance = AVSpeechUtterance(string: phrase)
@@ -174,6 +211,10 @@ class WorkoutTimer : ObservableObject {
 //        self.pedometer.stopUpdates()
 //    }
 //
+    
+    ///
+    /// Get pedometer data for the workout
+    ///
     func getPedometerDataForWorkout(startDate: Date, endDate: Date) {
         self.pedometer.queryPedometerData(from: startDate, to: endDate) { data, error in
             print(data as Any)

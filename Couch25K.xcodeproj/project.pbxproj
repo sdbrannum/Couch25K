@@ -22,7 +22,6 @@
 		76AC577827B06CD800B3BB30 /* Couch25KUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC577727B06CD800B3BB30 /* Couch25KUITestsLaunchTests.swift */; };
 		76AC578F27B07D6D00B3BB30 /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC578E27B07D6D00B3BB30 /* WorkoutDetailView.swift */; };
 		76AC579627B0C9CD00B3BB30 /* WorkoutActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC579527B0C9CD00B3BB30 /* WorkoutActiveView.swift */; };
-		76DB4D7027B350540057EF74 /* WorkoutTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB4D6F27B350540057EF74 /* WorkoutTimer.swift */; };
 		76EAB72D27B4A07400F9FBF8 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAB72C27B4A07400F9FBF8 /* Workout.swift */; };
 		76EAB72F27B4A85600F9FBF8 /* WorkoutTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAB72E27B4A85600F9FBF8 /* WorkoutTracker.swift */; };
 		76EAB73127B4A8A100F9FBF8 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAB73027B4A8A100F9FBF8 /* CountdownTimer.swift */; };
@@ -105,7 +104,6 @@
 		76AC577727B06CD800B3BB30 /* Couch25KUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Couch25KUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		76AC578E27B07D6D00B3BB30 /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
 		76AC579527B0C9CD00B3BB30 /* WorkoutActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutActiveView.swift; sourceTree = "<group>"; };
-		76DB4D6F27B350540057EF74 /* WorkoutTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTimer.swift; sourceTree = "<group>"; };
 		76EAB72C27B4A07400F9FBF8 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		76EAB72E27B4A85600F9FBF8 /* WorkoutTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTracker.swift; sourceTree = "<group>"; };
 		76EAB73027B4A8A100F9FBF8 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				76AC575627B06CD700B3BB30 /* NotificationController.swift */,
 				76AC575827B06CD700B3BB30 /* NotificationView.swift */,
 				76AC575A27B06CD700B3BB30 /* ComplicationController.swift */,
-				76DB4D6F27B350540057EF74 /* WorkoutTimer.swift */,
 				76EAB72E27B4A85600F9FBF8 /* WorkoutTracker.swift */,
 				76EAB73027B4A8A100F9FBF8 /* CountdownTimer.swift */,
 				76AC575C27B06CD800B3BB30 /* Assets.xcassets */,
@@ -409,7 +406,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76DB4D7027B350540057EF74 /* WorkoutTimer.swift in Sources */,
 				76AC578F27B07D6D00B3BB30 /* WorkoutDetailView.swift in Sources */,
 				76AC575727B06CD700B3BB30 /* NotificationController.swift in Sources */,
 				76AC575527B06CD700B3BB30 /* ContentView.swift in Sources */,
