@@ -1,0 +1,865 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		76AC574327B06CD500B3BB30 /* Couch25K WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 76AC574227B06CD500B3BB30 /* Couch25K WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		76AC574827B06CD700B3BB30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76AC574727B06CD700B3BB30 /* Assets.xcassets */; };
+		76AC574E27B06CD700B3BB30 /* Couch25K WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 76AC574D27B06CD700B3BB30 /* Couch25K WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		76AC575327B06CD700B3BB30 /* Couch25KApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC575227B06CD700B3BB30 /* Couch25KApp.swift */; };
+		76AC575527B06CD700B3BB30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC575427B06CD700B3BB30 /* ContentView.swift */; };
+		76AC575727B06CD700B3BB30 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC575627B06CD700B3BB30 /* NotificationController.swift */; };
+		76AC575927B06CD700B3BB30 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC575827B06CD700B3BB30 /* NotificationView.swift */; };
+		76AC575B27B06CD700B3BB30 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC575A27B06CD700B3BB30 /* ComplicationController.swift */; };
+		76AC575D27B06CD800B3BB30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76AC575C27B06CD800B3BB30 /* Assets.xcassets */; };
+		76AC576027B06CD800B3BB30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76AC575F27B06CD800B3BB30 /* Preview Assets.xcassets */; };
+		76AC576C27B06CD800B3BB30 /* Couch25KTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC576B27B06CD800B3BB30 /* Couch25KTests.swift */; };
+		76AC577627B06CD800B3BB30 /* Couch25KUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC577527B06CD800B3BB30 /* Couch25KUITests.swift */; };
+		76AC577827B06CD800B3BB30 /* Couch25KUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC577727B06CD800B3BB30 /* Couch25KUITestsLaunchTests.swift */; };
+		76AC578F27B07D6D00B3BB30 /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC578E27B07D6D00B3BB30 /* WorkoutDetailView.swift */; };
+		76AC579627B0C9CD00B3BB30 /* WorkoutActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC579527B0C9CD00B3BB30 /* WorkoutActiveView.swift */; };
+		76DB4D7027B350540057EF74 /* WorkoutTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB4D6F27B350540057EF74 /* WorkoutTimer.swift */; };
+		76EAB72D27B4A07400F9FBF8 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAB72C27B4A07400F9FBF8 /* Workout.swift */; };
+		76EAB72F27B4A85600F9FBF8 /* WorkoutTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAB72E27B4A85600F9FBF8 /* WorkoutTracker.swift */; };
+		76EAB73127B4A8A100F9FBF8 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAB73027B4A8A100F9FBF8 /* CountdownTimer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		76AC574427B06CD500B3BB30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76AC573827B06CD500B3BB30 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76AC574127B06CD500B3BB30;
+			remoteInfo = "Couch25K WatchKit App";
+		};
+		76AC574F27B06CD700B3BB30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76AC573827B06CD500B3BB30 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76AC574C27B06CD700B3BB30;
+			remoteInfo = "Couch25K WatchKit Extension";
+		};
+		76AC576827B06CD800B3BB30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76AC573827B06CD500B3BB30 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76AC574C27B06CD700B3BB30;
+			remoteInfo = "Couch25K WatchKit Extension";
+		};
+		76AC577227B06CD800B3BB30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76AC573827B06CD500B3BB30 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76AC574127B06CD500B3BB30;
+			remoteInfo = "Couch25K WatchKit App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		76AC577E27B06CD800B3BB30 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				76AC574E27B06CD700B3BB30 /* Couch25K WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76AC578227B06CD800B3BB30 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				76AC574327B06CD500B3BB30 /* Couch25K WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		76AC573E27B06CD500B3BB30 /* Couch25K.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Couch25K.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		76AC574227B06CD500B3BB30 /* Couch25K WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Couch25K WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		76AC574727B06CD700B3BB30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		76AC574D27B06CD700B3BB30 /* Couch25K WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Couch25K WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		76AC575227B06CD700B3BB30 /* Couch25KApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Couch25KApp.swift; sourceTree = "<group>"; };
+		76AC575427B06CD700B3BB30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		76AC575627B06CD700B3BB30 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		76AC575827B06CD700B3BB30 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		76AC575A27B06CD700B3BB30 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		76AC575C27B06CD800B3BB30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		76AC575F27B06CD800B3BB30 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		76AC576127B06CD800B3BB30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76AC576227B06CD800B3BB30 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		76AC576727B06CD800B3BB30 /* Couch25KTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Couch25KTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76AC576B27B06CD800B3BB30 /* Couch25KTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Couch25KTests.swift; sourceTree = "<group>"; };
+		76AC577127B06CD800B3BB30 /* Couch25KUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Couch25KUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76AC577527B06CD800B3BB30 /* Couch25KUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Couch25KUITests.swift; sourceTree = "<group>"; };
+		76AC577727B06CD800B3BB30 /* Couch25KUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Couch25KUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		76AC578E27B07D6D00B3BB30 /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
+		76AC579527B0C9CD00B3BB30 /* WorkoutActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutActiveView.swift; sourceTree = "<group>"; };
+		76DB4D6F27B350540057EF74 /* WorkoutTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTimer.swift; sourceTree = "<group>"; };
+		76EAB72C27B4A07400F9FBF8 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		76EAB72E27B4A85600F9FBF8 /* WorkoutTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTracker.swift; sourceTree = "<group>"; };
+		76EAB73027B4A8A100F9FBF8 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		76AC574A27B06CD700B3BB30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76AC576427B06CD800B3BB30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76AC576E27B06CD800B3BB30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		76AC573727B06CD500B3BB30 = {
+			isa = PBXGroup;
+			children = (
+				76AC574627B06CD500B3BB30 /* Couch25K WatchKit App */,
+				76AC575127B06CD700B3BB30 /* Couch25K WatchKit Extension */,
+				76AC576A27B06CD800B3BB30 /* Couch25KTests */,
+				76AC577427B06CD800B3BB30 /* Couch25KUITests */,
+				76AC573F27B06CD500B3BB30 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		76AC573F27B06CD500B3BB30 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				76AC573E27B06CD500B3BB30 /* Couch25K.app */,
+				76AC574227B06CD500B3BB30 /* Couch25K WatchKit App.app */,
+				76AC574D27B06CD700B3BB30 /* Couch25K WatchKit Extension.appex */,
+				76AC576727B06CD800B3BB30 /* Couch25KTests.xctest */,
+				76AC577127B06CD800B3BB30 /* Couch25KUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		76AC574627B06CD500B3BB30 /* Couch25K WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				76AC574727B06CD700B3BB30 /* Assets.xcassets */,
+			);
+			path = "Couch25K WatchKit App";
+			sourceTree = "<group>";
+		};
+		76AC575127B06CD700B3BB30 /* Couch25K WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				76AC578C27B074F600B3BB30 /* Models */,
+				76AC575227B06CD700B3BB30 /* Couch25KApp.swift */,
+				76AC575427B06CD700B3BB30 /* ContentView.swift */,
+				76AC578E27B07D6D00B3BB30 /* WorkoutDetailView.swift */,
+				76AC579527B0C9CD00B3BB30 /* WorkoutActiveView.swift */,
+				76AC575627B06CD700B3BB30 /* NotificationController.swift */,
+				76AC575827B06CD700B3BB30 /* NotificationView.swift */,
+				76AC575A27B06CD700B3BB30 /* ComplicationController.swift */,
+				76DB4D6F27B350540057EF74 /* WorkoutTimer.swift */,
+				76EAB72E27B4A85600F9FBF8 /* WorkoutTracker.swift */,
+				76EAB73027B4A8A100F9FBF8 /* CountdownTimer.swift */,
+				76AC575C27B06CD800B3BB30 /* Assets.xcassets */,
+				76AC576127B06CD800B3BB30 /* Info.plist */,
+				76AC576227B06CD800B3BB30 /* PushNotificationPayload.apns */,
+				76AC575E27B06CD800B3BB30 /* Preview Content */,
+			);
+			path = "Couch25K WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		76AC575E27B06CD800B3BB30 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				76AC575F27B06CD800B3BB30 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		76AC576A27B06CD800B3BB30 /* Couch25KTests */ = {
+			isa = PBXGroup;
+			children = (
+				76AC576B27B06CD800B3BB30 /* Couch25KTests.swift */,
+			);
+			path = Couch25KTests;
+			sourceTree = "<group>";
+		};
+		76AC577427B06CD800B3BB30 /* Couch25KUITests */ = {
+			isa = PBXGroup;
+			children = (
+				76AC577527B06CD800B3BB30 /* Couch25KUITests.swift */,
+				76AC577727B06CD800B3BB30 /* Couch25KUITestsLaunchTests.swift */,
+			);
+			path = Couch25KUITests;
+			sourceTree = "<group>";
+		};
+		76AC578C27B074F600B3BB30 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				76EAB72C27B4A07400F9FBF8 /* Workout.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		76AC573D27B06CD500B3BB30 /* Couch25K */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76AC578327B06CD800B3BB30 /* Build configuration list for PBXNativeTarget "Couch25K" */;
+			buildPhases = (
+				76AC573C27B06CD500B3BB30 /* Resources */,
+				76AC578227B06CD800B3BB30 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76AC574527B06CD500B3BB30 /* PBXTargetDependency */,
+			);
+			name = Couch25K;
+			productName = Couch25K;
+			productReference = 76AC573E27B06CD500B3BB30 /* Couch25K.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		76AC574127B06CD500B3BB30 /* Couch25K WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76AC577F27B06CD800B3BB30 /* Build configuration list for PBXNativeTarget "Couch25K WatchKit App" */;
+			buildPhases = (
+				76AC574027B06CD500B3BB30 /* Resources */,
+				76AC577E27B06CD800B3BB30 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76AC575027B06CD700B3BB30 /* PBXTargetDependency */,
+			);
+			name = "Couch25K WatchKit App";
+			productName = "Couch25K WatchKit App";
+			productReference = 76AC574227B06CD500B3BB30 /* Couch25K WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		76AC574C27B06CD700B3BB30 /* Couch25K WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76AC577B27B06CD800B3BB30 /* Build configuration list for PBXNativeTarget "Couch25K WatchKit Extension" */;
+			buildPhases = (
+				76AC574927B06CD700B3BB30 /* Sources */,
+				76AC574A27B06CD700B3BB30 /* Frameworks */,
+				76AC574B27B06CD700B3BB30 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Couch25K WatchKit Extension";
+			productName = "Couch25K WatchKit Extension";
+			productReference = 76AC574D27B06CD700B3BB30 /* Couch25K WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		76AC576627B06CD800B3BB30 /* Couch25KTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76AC578627B06CD800B3BB30 /* Build configuration list for PBXNativeTarget "Couch25KTests" */;
+			buildPhases = (
+				76AC576327B06CD800B3BB30 /* Sources */,
+				76AC576427B06CD800B3BB30 /* Frameworks */,
+				76AC576527B06CD800B3BB30 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76AC576927B06CD800B3BB30 /* PBXTargetDependency */,
+			);
+			name = Couch25KTests;
+			productName = Couch25KTests;
+			productReference = 76AC576727B06CD800B3BB30 /* Couch25KTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		76AC577027B06CD800B3BB30 /* Couch25KUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76AC578927B06CD800B3BB30 /* Build configuration list for PBXNativeTarget "Couch25KUITests" */;
+			buildPhases = (
+				76AC576D27B06CD800B3BB30 /* Sources */,
+				76AC576E27B06CD800B3BB30 /* Frameworks */,
+				76AC576F27B06CD800B3BB30 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76AC577327B06CD800B3BB30 /* PBXTargetDependency */,
+			);
+			name = Couch25KUITests;
+			productName = Couch25KUITests;
+			productReference = 76AC577127B06CD800B3BB30 /* Couch25KUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		76AC573827B06CD500B3BB30 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					76AC573D27B06CD500B3BB30 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					76AC574127B06CD500B3BB30 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					76AC574C27B06CD700B3BB30 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					76AC576627B06CD800B3BB30 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 76AC574C27B06CD700B3BB30;
+					};
+					76AC577027B06CD800B3BB30 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 76AC574127B06CD500B3BB30;
+					};
+				};
+			};
+			buildConfigurationList = 76AC573B27B06CD500B3BB30 /* Build configuration list for PBXProject "Couch25K" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 76AC573727B06CD500B3BB30;
+			productRefGroup = 76AC573F27B06CD500B3BB30 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				76AC573D27B06CD500B3BB30 /* Couch25K */,
+				76AC574127B06CD500B3BB30 /* Couch25K WatchKit App */,
+				76AC574C27B06CD700B3BB30 /* Couch25K WatchKit Extension */,
+				76AC576627B06CD800B3BB30 /* Couch25KTests */,
+				76AC577027B06CD800B3BB30 /* Couch25KUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		76AC573C27B06CD500B3BB30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76AC574027B06CD500B3BB30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76AC574827B06CD700B3BB30 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76AC574B27B06CD700B3BB30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76AC576027B06CD800B3BB30 /* Preview Assets.xcassets in Resources */,
+				76AC575D27B06CD800B3BB30 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76AC576527B06CD800B3BB30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76AC576F27B06CD800B3BB30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		76AC574927B06CD700B3BB30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76DB4D7027B350540057EF74 /* WorkoutTimer.swift in Sources */,
+				76AC578F27B07D6D00B3BB30 /* WorkoutDetailView.swift in Sources */,
+				76AC575727B06CD700B3BB30 /* NotificationController.swift in Sources */,
+				76AC575527B06CD700B3BB30 /* ContentView.swift in Sources */,
+				76EAB73127B4A8A100F9FBF8 /* CountdownTimer.swift in Sources */,
+				76EAB72F27B4A85600F9FBF8 /* WorkoutTracker.swift in Sources */,
+				76EAB72D27B4A07400F9FBF8 /* Workout.swift in Sources */,
+				76AC575B27B06CD700B3BB30 /* ComplicationController.swift in Sources */,
+				76AC579627B0C9CD00B3BB30 /* WorkoutActiveView.swift in Sources */,
+				76AC575327B06CD700B3BB30 /* Couch25KApp.swift in Sources */,
+				76AC575927B06CD700B3BB30 /* NotificationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76AC576327B06CD800B3BB30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76AC576C27B06CD800B3BB30 /* Couch25KTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76AC576D27B06CD800B3BB30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76AC577827B06CD800B3BB30 /* Couch25KUITestsLaunchTests.swift in Sources */,
+				76AC577627B06CD800B3BB30 /* Couch25KUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		76AC574527B06CD500B3BB30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76AC574127B06CD500B3BB30 /* Couch25K WatchKit App */;
+			targetProxy = 76AC574427B06CD500B3BB30 /* PBXContainerItemProxy */;
+		};
+		76AC575027B06CD700B3BB30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76AC574C27B06CD700B3BB30 /* Couch25K WatchKit Extension */;
+			targetProxy = 76AC574F27B06CD700B3BB30 /* PBXContainerItemProxy */;
+		};
+		76AC576927B06CD800B3BB30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76AC574C27B06CD700B3BB30 /* Couch25K WatchKit Extension */;
+			targetProxy = 76AC576827B06CD800B3BB30 /* PBXContainerItemProxy */;
+		};
+		76AC577327B06CD800B3BB30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76AC574127B06CD500B3BB30 /* Couch25K WatchKit App */;
+			targetProxy = 76AC577227B06CD800B3BB30 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		76AC577927B06CD800B3BB30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		76AC577A27B06CD800B3BB30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		76AC577C27B06CD800B3BB30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Couch25K WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = T88P5U7WUA;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Couch25K WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Couch25K WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Couch25K_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMotionUsageDescription = "motion detection";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25K.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Debug;
+		};
+		76AC577D27B06CD800B3BB30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Couch25K WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = T88P5U7WUA;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Couch25K WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Couch25K WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Couch25K_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMotionUsageDescription = "motion detection";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25K.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Release;
+		};
+		76AC578027B06CD800B3BB30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T88P5U7WUA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Couch25K_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Couch25K WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25K.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Debug;
+		};
+		76AC578127B06CD800B3BB30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T88P5U7WUA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Couch25K_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Couch25K WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25K.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Release;
+		};
+		76AC578427B06CD800B3BB30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T88P5U7WUA;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25K;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		76AC578527B06CD800B3BB30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T88P5U7WUA;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25K;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		76AC578727B06CD800B3BB30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25KTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Couch25K WatchKit Extension.appex/Couch25K WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Debug;
+		};
+		76AC578827B06CD800B3BB30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25KTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Couch25K WatchKit Extension.appex/Couch25K WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Release;
+		};
+		76AC578A27B06CD800B3BB30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25KUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Couch25K WatchKit App";
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Debug;
+		};
+		76AC578B27B06CD800B3BB30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25KUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Couch25K WatchKit App";
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		76AC573B27B06CD500B3BB30 /* Build configuration list for PBXProject "Couch25K" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76AC577927B06CD800B3BB30 /* Debug */,
+				76AC577A27B06CD800B3BB30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76AC577B27B06CD800B3BB30 /* Build configuration list for PBXNativeTarget "Couch25K WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76AC577C27B06CD800B3BB30 /* Debug */,
+				76AC577D27B06CD800B3BB30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76AC577F27B06CD800B3BB30 /* Build configuration list for PBXNativeTarget "Couch25K WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76AC578027B06CD800B3BB30 /* Debug */,
+				76AC578127B06CD800B3BB30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76AC578327B06CD800B3BB30 /* Build configuration list for PBXNativeTarget "Couch25K" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76AC578427B06CD800B3BB30 /* Debug */,
+				76AC578527B06CD800B3BB30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76AC578627B06CD800B3BB30 /* Build configuration list for PBXNativeTarget "Couch25KTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76AC578727B06CD800B3BB30 /* Debug */,
+				76AC578827B06CD800B3BB30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76AC578927B06CD800B3BB30 /* Build configuration list for PBXNativeTarget "Couch25KUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76AC578A27B06CD800B3BB30 /* Debug */,
+				76AC578B27B06CD800B3BB30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 76AC573827B06CD500B3BB30 /* Project object */;
+}
