@@ -2,10 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Share workout info with Apple Health</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Update workout info with Apple Health</string>
+	<string>Update health data from app</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Share health data with app</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>

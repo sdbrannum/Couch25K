@@ -47,6 +47,12 @@ struct WorkoutActiveView: View {
             Text(currentActivityTimeString)
                 .font(Font.title)
                 .padding(.bottom, 10)
+            
+            Button(action: {
+                self.workoutTracker.getPedometerDataForWorkout()
+            }) {
+                Text("Get ped")
+            }
 
             
             HStack {

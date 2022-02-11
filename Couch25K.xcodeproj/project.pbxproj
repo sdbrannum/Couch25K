@@ -22,6 +22,7 @@
 		76AC577827B06CD800B3BB30 /* Couch25KUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC577727B06CD800B3BB30 /* Couch25KUITestsLaunchTests.swift */; };
 		76AC578F27B07D6D00B3BB30 /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC578E27B07D6D00B3BB30 /* WorkoutDetailView.swift */; };
 		76AC579627B0C9CD00B3BB30 /* WorkoutActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC579527B0C9CD00B3BB30 /* WorkoutActiveView.swift */; };
+		76C5217827B60AB200674C6E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C5217727B60AB200674C6E /* HealthKit.framework */; };
 		76EAB72D27B4A07400F9FBF8 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAB72C27B4A07400F9FBF8 /* Workout.swift */; };
 		76EAB72F27B4A85600F9FBF8 /* WorkoutTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAB72E27B4A85600F9FBF8 /* WorkoutTracker.swift */; };
 		76EAB73127B4A8A100F9FBF8 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAB73027B4A8A100F9FBF8 /* CountdownTimer.swift */; };
@@ -104,6 +105,8 @@
 		76AC577727B06CD800B3BB30 /* Couch25KUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Couch25KUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		76AC578E27B07D6D00B3BB30 /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
 		76AC579527B0C9CD00B3BB30 /* WorkoutActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutActiveView.swift; sourceTree = "<group>"; };
+		76C5217527B60AB200674C6E /* Couch25K WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Couch25K WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		76C5217727B60AB200674C6E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		76EAB72C27B4A07400F9FBF8 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		76EAB72E27B4A85600F9FBF8 /* WorkoutTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTracker.swift; sourceTree = "<group>"; };
 		76EAB73027B4A8A100F9FBF8 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76C5217827B60AB200674C6E /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +146,7 @@
 				76AC576A27B06CD800B3BB30 /* Couch25KTests */,
 				76AC577427B06CD800B3BB30 /* Couch25KUITests */,
 				76AC573F27B06CD500B3BB30 /* Products */,
+				76C5217627B60AB200674C6E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,6 +173,7 @@
 		76AC575127B06CD700B3BB30 /* Couch25K WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				76C5217527B60AB200674C6E /* Couch25K WatchKit Extension.entitlements */,
 				76AC578C27B074F600B3BB30 /* Models */,
 				76AC575227B06CD700B3BB30 /* Couch25KApp.swift */,
 				76AC575427B06CD700B3BB30 /* ContentView.swift */,
@@ -217,6 +223,14 @@
 				76EAB72C27B4A07400F9FBF8 /* Workout.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		76C5217627B60AB200674C6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76C5217727B60AB200674C6E /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -580,6 +594,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Couch25K WatchKit Extension/Couch25K WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Couch25K WatchKit Extension/Preview Content\"";
@@ -589,6 +604,7 @@
 				INFOPLIST_FILE = "Couch25K WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Couch25K WatchKit Extension";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = Couch25K_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Update workout info with Apple Health";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMotionUsageDescription = "motion detection";
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -613,6 +629,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Couch25K WatchKit Extension/Couch25K WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Couch25K WatchKit Extension/Preview Content\"";
@@ -622,6 +639,7 @@
 				INFOPLIST_FILE = "Couch25K WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Couch25K WatchKit Extension";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = Couch25K_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Update workout info with Apple Health";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMotionUsageDescription = "motion detection";
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -729,6 +747,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T88P5U7WUA;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25KTests;
@@ -749,6 +768,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T88P5U7WUA;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25KTests;
@@ -767,6 +787,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T88P5U7WUA;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25KUITests;
@@ -785,6 +806,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T88P5U7WUA;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brannum.steven.Couch25KUITests;

@@ -10,14 +10,17 @@ import SwiftUI
 import HealthKit
 import AVFAudio
 import CoreMotion
+import WatchKit
 
-class WorkoutTracker : ObservableObject {
+class WorkoutTracker : NSObject, ObservableObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate {
     private let healthStore = HKHealthStore()
     private let pedometer = CMPedometer()
     private let exercises: [ExerciseItem]
     private let startDate: Date = Date()
     private let countdownTimer: CountdownTimer
     private let totalWorkoutTime: TimeInterval
+    private var workoutBuilder: HKLiveWorkoutBuilder?
+    private var workoutSession: HKWorkoutSession?
     
     @Published var workoutTimeLeft: TimeInterval = 0.0
     @Published var exerciseTimeLeft: TimeInterval = 0.0
@@ -39,14 +42,22 @@ class WorkoutTracker : ObservableObject {
     }
     
     init(exercises: [ExerciseItem]) {
+        
         self.exercises = exercises
         self.totalWorkoutTime = exercises.reduce(0) { acc, curr in acc + curr.duration }
         self.workoutTimeLeft = totalWorkoutTime
         self.countdownTimer = CountdownTimer(workoutTotalTime: self.totalWorkoutTime)
+        
+        super.init()
+        self.startHealthCollection()
         self.setNextExercise()
     }
     
     func start() {
+        if self.workoutSession?.state == .paused {
+            self.workoutSession?.resume()
+        }
+        
         self.active = true
         self.countdownTimer.start() { exerciseTimeLeft, workoutTimeLeft in
             self.exerciseTimeLeft = exerciseTimeLeft
@@ -61,11 +72,14 @@ class WorkoutTracker : ObservableObject {
     func pause() {
         self.active = false
         self.countdownTimer.stop()
+        self.workoutSession?.pause()
     }
     
     func cancel() {
         self.pause()
         self.reset()
+        self.workoutSession?.end()
+        self.workoutBuilder?.discardWorkout()
     }
 
     ///
@@ -75,7 +89,8 @@ class WorkoutTracker : ObservableObject {
         self.active = false
         self.countdownTimer.stop()
         // healthStore.stop()
-        self.saveToHealthStore()
+        //self.saveToHealthStore()
+        self.saveHealthCollection()
     }
     
     /**
@@ -104,73 +119,66 @@ class WorkoutTracker : ObservableObject {
             WKInterfaceDevice.current().play(.start)
             self.currentExerciseIdx += 1
         }
-//
-//
-//        if self.exercises.count > 0 {
-//            WKInterfaceDevice.current().play(.stop)
-//            WKInterfaceDevice.current().play(.start)
-//            let exercise = self.exercises.remove(at: 0)
-//            let x = self.exercises.
-//            self.exerciseName = exercise.exercise.description
-//            self.exerciseTimeLeft = exercise.duration
-//            self.countdownTimer.setExerciseTimeLeft(time: self.exerciseTimeLeft)
-//        } else {
-//            WKInterfaceDevice.current().play(.stop)
-//            self.finish()
-//        }
+
     }
     
-    ///
-    /// Save workout data to HealthStore
-    ///
-    private func saveToHealthStore() {
-        let endDate = Date()
-        getPedometerDataForWorkout(startDate: self.startDate, endDate: endDate)
-        return
-//        let workoutConfig = HKWorkoutConfiguration()
-//        workoutConfig.activityType = .running
-//        let builder = HKWorkoutBuilder(
-//            healthStore: self.healthStore,
-//            configuration: workoutConfig,
-//            device: .local()
-//        )
-//
-//        builder.beginCollection(withStart: Date()) { success, error in
-//            guard success else {
-//                return
-//            }
-//            guard let quantityType = HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning) else {
-//                return
-//            }
-//            let quantity = HKQuantity(unit: .meter(), doubleValue: 11.1)
-//            let sample = HKCumulativeQuantitySample(
-//                type: quantityType,
-//                quantity: quantity,
-//                start: self.startDate,
-//                end: endDate
-//            )
-//
-//            //1. Add the sample to the workout builder
-//            builder.add([sample]) { (success, error) in
-//              guard success else {
-//                return
-//              }
-//
-//              //2. Finish collection workout data and set the workout end date
-//              builder.endCollection(withEnd: endDate) { (success, error) in
-//                guard success else {
-//                  return
-//                }
-//
-//                //3. Create the workout with the samples added
-//                builder.finishWorkout { (_, error) in
-//                  return
-//                }
-//              }
-//            }
-//        }
+    private func startHealthCollection() {
+        let workoutConfig = HKWorkoutConfiguration()
+        workoutConfig.activityType = .running
+        // TODO: allow setting location type
+        workoutConfig.locationType = .indoor
+        
+        let session : HKWorkoutSession
+        do {
+            session = try HKWorkoutSession(healthStore: self.healthStore, configuration: workoutConfig)
+        } catch {
+            // TODO: show error message to user
+            return
+        }
+        
+        let builder = session.associatedWorkoutBuilder()
+        builder.dataSource = HKLiveWorkoutDataSource(healthStore: self.healthStore, workoutConfiguration: workoutConfig)
+        builder.delegate = self
+        session.delegate = self
+        
+        self.workoutBuilder = builder
+        self.workoutSession = session
+        self.workoutSession!.startActivity(with: self.startDate)
+        self.workoutBuilder!.beginCollection(withStart: Date()) { (success, error) in
+            
+            guard success else {
+                // Handle errors.
+                return
+            }
+            
+            // Indicate that the session has started.
+        }
     }
     
+    private func saveHealthCollection() {
+        self.workoutSession?.end()
+        self.workoutBuilder?.endCollection(withEnd: Date()) { (success, error) in
+            
+            guard success else {
+                // Handle errors.
+                return
+            }
+                                
+            self.workoutBuilder?.finishWorkout { (workout, error) in
+                
+                guard workout != nil else {
+                    // Handle errors.
+                    return
+                }
+                
+                DispatchQueue.main.async() {
+                    // Update the user interface.
+                }
+            }
+        }
+    }
+    
+
     // TODO: maybe switch out with audio clips using AVFoundation and AVAudioPlayer
     ///
     /// Use Speech Synthesis to say a phrase
@@ -198,26 +206,42 @@ class WorkoutTracker : ObservableObject {
         synthesizer.speak(utterance)
         
     }
-//
-//    func startPedometer() {
-//        if CMPedometer.isStepCountingAvailable() {
-//            self.pedometer.startUpdates(from: Date()) { data, error in
-//                print(data as Any)
-//            }
-//        }
-//    }
-//
-//    func stopPedometer() {
-//        self.pedometer.stopUpdates()
-//    }
-//
     
-    ///
-    /// Get pedometer data for the workout
-    ///
-    func getPedometerDataForWorkout(startDate: Date, endDate: Date) {
-        self.pedometer.queryPedometerData(from: startDate, to: endDate) { data, error in
-            print(data as Any)
+    
+    func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
+        for type in collectedTypes {
+            guard let quantityType = type as? HKQuantityType else {
+                return
+            }
+            switch quantityType {
+                case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning):
+                    let statistics = workoutBuilder.statistics(for: quantityType)
+                    let value = statistics!.sumQuantity()!.doubleValue(for: HKUnit.meterUnit(with: .kilo))
+                    print("[workoutBuilder] Distance: \(value)")
+                case HKQuantityType.quantityType(forIdentifier: .heartRate):
+                    let statistics = workoutBuilder.statistics(for: quantityType)
+                    let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
+                    let value = statistics!.mostRecentQuantity()?.doubleValue(for: heartRateUnit)
+                    let stringValue = String(Int(Double(round(1 * value!) / 1)))
+                    // bpmLabel.setText(stringValue)
+                    print("[workoutBuilder] Heart Rate: \(stringValue)")
+                default:
+                    return
+            }
         }
+    }
+    
+    func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) {
+        // Retreive the workout event.
+        guard let workoutEventType = workoutBuilder.workoutEvents.last?.type else { return }
+        print("[workoutBuilderDidCollectEvent] Workout Builder changed event: \(workoutEventType.rawValue)")
+    }
+    
+    func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
+        print("[workoutSession] Changed State: \(toState.rawValue)")
+    }
+    
+    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
+        print("[workoutSession] Encountered an error: \(error)")
     }
 }
