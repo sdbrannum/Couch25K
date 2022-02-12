@@ -39,21 +39,35 @@ struct WorkoutActiveView: View {
         }
     }
     
+    var heartRate : Int {
+        return Int(self.workoutTracker.heartRate)
+    }
+    
+    var distance: String {
+        return String(Double(round(100 * (self.workoutTracker.distance)) / 100))
+    }
+    
     var body: some View {
         VStack {
+            HStack {
+                Image(systemName: "heart.fill")
+                    .foregroundColor(.red)
+                Text("\(heartRate)")
+                    .foregroundColor(.red)
+                    
+                Spacer()
+                Text("\(distance) km")
+            }
+            Spacer()
             Text(totalTimeRemainingString)
                 .font(Font.subheadline)
             
             Text(currentActivityTimeString)
                 .font(Font.title)
                 .padding(.bottom, 10)
+                .foregroundColor(.yellow)
             
-            Button(action: {
-                self.workoutTracker.getPedometerDataForWorkout()
-            }) {
-                Text("Get ped")
-            }
-
+            Spacer()
             
             HStack {
                Button(action: {
@@ -88,11 +102,7 @@ struct WorkoutActiveView: View {
             .onDisappear { self.workoutTracker.cancel() }
         }
 
-    }
-    
-    
-
-    
+    }    
 }
 
 struct WorkoutActive_Previews: PreviewProvider {

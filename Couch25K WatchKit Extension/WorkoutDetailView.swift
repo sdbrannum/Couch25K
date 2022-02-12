@@ -17,19 +17,21 @@ struct WorkoutDetailView: View {
     }
     
     var body: some View {
+        Spacer()
         Text(workout.name)
             .font(Font.title)
     
         Text(duration)
-            .font(Font.subheadline)
             .padding(.bottom, 10)
+        
+        Spacer()
         
         NavigationLink() {
             WorkoutActiveView(exercises: workout.exercises)
                 .navigationBarBackButtonHidden(true)
         } label :  {
             Image(systemName: "play")
-                        .foregroundColor(.green)
+                .foregroundColor(.green)
             Text("Start")
         }
         .buttonStyle(.bordered)

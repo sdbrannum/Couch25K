@@ -26,6 +26,8 @@ class WorkoutTracker : NSObject, ObservableObject, HKWorkoutSessionDelegate, HKL
     @Published var exerciseTimeLeft: TimeInterval = 0.0
     @Published var exerciseName: String? = nil
     @Published var active: Bool = false
+    @Published var distance: Double = 0.00
+    @Published var heartRate: Double = 0.0
         
     var currentExerciseIdx : Int = -1 {
         didSet {
@@ -80,6 +82,8 @@ class WorkoutTracker : NSObject, ObservableObject, HKWorkoutSessionDelegate, HKL
         self.reset()
         self.workoutSession?.end()
         self.workoutBuilder?.discardWorkout()
+        self.workoutSession = nil
+        self.workoutBuilder = nil
     }
 
     ///
@@ -88,9 +92,9 @@ class WorkoutTracker : NSObject, ObservableObject, HKWorkoutSessionDelegate, HKL
     func finish() {
         self.active = false
         self.countdownTimer.stop()
-        // healthStore.stop()
-        //self.saveToHealthStore()
         self.saveHealthCollection()
+        self.workoutSession = nil
+        self.workoutBuilder = nil
     }
     
     /**
@@ -105,6 +109,8 @@ class WorkoutTracker : NSObject, ObservableObject, HKWorkoutSessionDelegate, HKL
     private func reset() {
         self.currentExerciseIdx = 0
         self.workoutTimeLeft = self.totalWorkoutTime
+        self.heartRate = 0.0
+        self.distance = 0.0
     }
 
     ///
@@ -172,7 +178,7 @@ class WorkoutTracker : NSObject, ObservableObject, HKWorkoutSessionDelegate, HKL
                 }
                 
                 DispatchQueue.main.async() {
-                    // Update the user interface.
+                    // Update the user interface
                 }
             }
         }
@@ -216,15 +222,22 @@ class WorkoutTracker : NSObject, ObservableObject, HKWorkoutSessionDelegate, HKL
             switch quantityType {
                 case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning):
                     let statistics = workoutBuilder.statistics(for: quantityType)
-                    let value = statistics!.sumQuantity()!.doubleValue(for: HKUnit.meterUnit(with: .kilo))
-                    print("[workoutBuilder] Distance: \(value)")
+                    let value = statistics?.sumQuantity()?.doubleValue(for: HKUnit.meterUnit(with: .kilo))
+                    print("[workoutBuilder] Distance: \(value!)")
+                    DispatchQueue.main.async() {
+                        // Update the user interface
+                        self.distance = value ?? self.distance
+                    }
                 case HKQuantityType.quantityType(forIdentifier: .heartRate):
                     let statistics = workoutBuilder.statistics(for: quantityType)
                     let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
-                    let value = statistics!.mostRecentQuantity()?.doubleValue(for: heartRateUnit)
-                    let stringValue = String(Int(Double(round(1 * value!) / 1)))
+                    let value = statistics?.mostRecentQuantity()?.doubleValue(for: heartRateUnit)
+                    // let stringValue = String(Int(Double(round(1 * value!) / 1)))
                     // bpmLabel.setText(stringValue)
-                    print("[workoutBuilder] Heart Rate: \(stringValue)")
+                    print("[workoutBuilder] Heart Rate: \(value!)")
+                    DispatchQueue.main.async() {
+                        self.heartRate = value ?? self.heartRate
+                    }
                 default:
                     return
             }

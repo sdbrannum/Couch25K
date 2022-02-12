@@ -20,7 +20,7 @@ enum Exercise : CustomStringConvertible {
             case .walk:
                 return "Walk"
             case .run:
-                return "Run"
+                return "Run "
             case .cooldown:
                 return "Cool"
         }
