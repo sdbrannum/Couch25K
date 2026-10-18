@@ -8,10 +8,13 @@
 import SwiftUI
 
 @main
-struct Couch25K_Watch_AppApp: App {
+struct Couch25KApp: App {
+    @StateObject private var historyStore = HistoryStore()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(historyStore)
         }
     }
 }
