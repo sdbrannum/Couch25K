@@ -2,30 +2,15 @@ import SwiftUI
 import HealthKit
 
 struct ContentView: View {
-    @EnvironmentObject var historyStore: HistoryStore
     private let healthStore = HKHealthStore()
-
-    private var weekGroups: [(week: Int, workouts: [Workout])] {
-        stride(from: 0, to: workouts.count, by: 3).enumerated().map { idx, start in
-            (idx + 1, Array(workouts[start..<min(start + 3, workouts.count)]))
-        }
-    }
 
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(weekGroups, id: \.week) { group in
-                    Section {
-                        ForEach(group.workouts) { workout in
-                            NavigationLink {
-                                WorkoutDetailView(workout: workout)
-                            } label: {
-                                WorkoutRow(workout: workout)
-                            }
-                        }
-                    } header: {
-                        WeekHeader(week: group.week, workouts: group.workouts)
-                    }
+            List(Program.all) { program in
+                NavigationLink {
+                    WorkoutListView(program: program)
+                } label: {
+                    ProgramRow(program: program)
                 }
             }
             .navigationTitle("Couch25K")
@@ -44,41 +29,23 @@ struct ContentView: View {
     }
 }
 
-private struct WorkoutRow: View {
+private struct ProgramRow: View {
     @EnvironmentObject var historyStore: HistoryStore
-    let workout: Workout
+    let program: Program
 
     var body: some View {
-        HStack {
-            Text(workout.name)
-            Spacer()
-            Image(systemName: historyStore.isCompleted(workout.name)
-                  ? "checkmark.circle.fill"
-                  : "circle")
-                .foregroundStyle(historyStore.isCompleted(workout.name)
-                  ? Color.green
-                  : Color.gray.opacity(0.4))
+        let workouts = program.workouts
+        let completed = workouts.filter { historyStore.isCompleted($0) }.count
+        VStack(alignment: .leading, spacing: 4) {
+            Text(program.name)
+                .font(.headline)
+            Text("\(program.weeks.count) weeks · \(completed)/\(workouts.count) done")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            ProgressView(value: Double(completed), total: Double(workouts.count))
+                .tint(.green)
         }
-    }
-}
-
-private struct WeekHeader: View {
-    @EnvironmentObject var historyStore: HistoryStore
-    let week: Int
-    let workouts: [Workout]
-
-    var body: some View {
-        HStack(spacing: 6) {
-            Text("Week \(week)")
-            Spacer()
-            HStack(spacing: 4) {
-                ForEach(workouts) { w in
-                    Circle()
-                        .fill(historyStore.isCompleted(w.name) ? Color.green : Color.gray.opacity(0.25))
-                        .frame(width: 6, height: 6)
-                }
-            }
-        }
+        .padding(.vertical, 4)
     }
 }
 

@@ -12,7 +12,7 @@ struct WorkoutDetailView: View {
                     IntervalStrip(exercises: workout.exercises)
                 }
 
-                if let last = historyStore.latestCompletion(for: workout.name) {
+                if let last = historyStore.latestCompletion(for: workout) {
                     completionSummary(last)
                 }
 
@@ -30,7 +30,7 @@ struct WorkoutDetailView: View {
         return HStack {
             Text("\(minutes) min")
             Spacer()
-            Text("\(runCount) intervals")
+            Text(runCount == 1 ? "1 interval" : "\(runCount) intervals")
         }
         .font(.caption)
         .foregroundStyle(.secondary)
@@ -39,7 +39,7 @@ struct WorkoutDetailView: View {
     @ViewBuilder
     private func completionSummary(_ last: WorkoutCompletion) -> some View {
         VStack(alignment: .leading, spacing: 6) {
-            let count = historyStore.completionCount(for: workout.name)
+            let count = historyStore.completionCount(for: workout)
             Label(
                 count == 1 ? "Completed once" : "Completed \(count)×",
                 systemImage: "checkmark.circle.fill"
@@ -76,7 +76,7 @@ struct WorkoutDetailView: View {
                     .navigationBarBackButtonHidden(true)
             } label: {
                 Label(
-                    historyStore.isCompleted(workout.name) ? "Start Again" : "Start",
+                    historyStore.isCompleted(workout) ? "Start Again" : "Start",
                     systemImage: "play.fill"
                 )
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -110,7 +110,7 @@ private struct IntervalStrip: View {
 
 #Preview {
     NavigationStack {
-        WorkoutDetailView(workout: workouts[0])
+        WorkoutDetailView(workout: Program.c25k.workouts[0])
             .environmentObject(HistoryStore())
     }
 }

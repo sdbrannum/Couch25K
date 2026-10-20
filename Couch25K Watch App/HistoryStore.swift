@@ -14,18 +14,18 @@ class HistoryStore: ObservableObject {
         completions.append(completion)
     }
 
-    func isCompleted(_ workoutName: String) -> Bool {
-        completions.contains { $0.workoutName == workoutName }
+    func isCompleted(_ workout: Workout) -> Bool {
+        completions.contains { $0.matches(workout) }
     }
 
-    func latestCompletion(for workoutName: String) -> WorkoutCompletion? {
+    func latestCompletion(for workout: Workout) -> WorkoutCompletion? {
         completions
-            .filter { $0.workoutName == workoutName }
+            .filter { $0.matches(workout) }
             .max(by: { $0.date < $1.date })
     }
 
-    func completionCount(for workoutName: String) -> Int {
-        completions.filter { $0.workoutName == workoutName }.count
+    func completionCount(for workout: Workout) -> Int {
+        completions.filter { $0.matches(workout) }.count
     }
 
     private func persist() {

@@ -46,6 +46,7 @@ struct WorkoutActiveView: View {
             guard finished else { return }
             historyStore.record(WorkoutCompletion(
                 id: UUID(),
+                programID: workout.programID,
                 workoutName: workout.name,
                 date: Date(),
                 distanceKm: workoutTracker.distance
@@ -124,6 +125,6 @@ struct WorkoutActiveView: View {
 }
 
 #Preview {
-    WorkoutActiveView(workout: workouts[0])
+    WorkoutActiveView(workout: Program.c25k.workouts[0])
         .environmentObject(HistoryStore())
 }
