@@ -84,6 +84,12 @@ class WorkoutTracker: NSObject, ObservableObject, HKWorkoutSessionDelegate, HKLi
         workoutBuilder = nil
     }
 
+    func skip() {
+        guard !isFinished, currentExerciseIdx >= 0 else { return }
+        workoutTimeLeft = countdownTimer.skipExercise()
+        setNextExercise()
+    }
+
     func finish() {
         active = false
         countdownTimer.stop()

@@ -14,6 +14,13 @@ class CountdownTimer {
         self.exerciseTimeLeft = time
     }
 
+    /// Drops whatever is left of the current exercise from the workout total.
+    func skipExercise() -> TimeInterval {
+        workoutTimeLeft = max(0, stepped(workoutTimeLeft, by: -exerciseTimeLeft))
+        exerciseTimeLeft = 0.0
+        return workoutTimeLeft
+    }
+
     func start(onTimeLeftUpdate: @escaping (_ exerciseTimeLeft: TimeInterval, _ workoutTimeLeft: TimeInterval) -> Void) {
         guard exerciseTimeLeft >= 0.0, timer == nil else { return }
         timer = Timer(timeInterval: withTimeInterval, repeats: true) { [weak self] _ in

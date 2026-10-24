@@ -91,7 +91,7 @@ struct WorkoutActiveView: View {
     }
 
     private var controls: some View {
-        HStack(spacing: 32) {
+        HStack {
             Button {
                 workoutTracker.cancel()
                 dismiss()
@@ -102,6 +102,8 @@ struct WorkoutActiveView: View {
                     .frame(width: 44, height: 44)
             }
             .buttonStyle(.plain)
+
+            Spacer()
 
             if workoutTracker.active {
                 Button { workoutTracker.pause() } label: {
@@ -120,6 +122,16 @@ struct WorkoutActiveView: View {
                 }
                 .buttonStyle(.plain)
             }
+
+            Spacer()
+
+            Button { workoutTracker.skip() } label: {
+                Image(systemName: "forward.end.fill")
+                    .font(.title3)
+                    .foregroundStyle(.primary)
+                    .frame(width: 44, height: 44)
+            }
+            .buttonStyle(.plain)
         }
     }
 }
