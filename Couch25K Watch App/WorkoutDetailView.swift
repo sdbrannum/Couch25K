@@ -1,7 +1,10 @@
 import SwiftUI
+import CoreLocation
 
 struct WorkoutDetailView: View {
     @EnvironmentObject var historyStore: HistoryStore
+    @AppStorage("outdoor") private var outdoor = false
+    @State private var locationManager = CLLocationManager()
     let workout: Workout
 
     var body: some View {
@@ -16,12 +19,31 @@ struct WorkoutDetailView: View {
                     completionSummary(last)
                 }
 
+                if !workout.exercises.isEmpty {
+                    locationToggle
+                }
+
                 startButton
             }
             .padding(.horizontal, 4)
             .padding(.top, 8)
         }
         .navigationTitle(workout.name)
+        .onAppear { requestLocationIfNeeded() }
+        .onChange(of: outdoor) { _, _ in requestLocationIfNeeded() }
+    }
+
+    private var locationToggle: some View {
+        Toggle(isOn: $outdoor) {
+            Label("Outdoor", systemImage: outdoor ? "sun.max.fill" : "house.fill")
+        }
+        .font(.caption)
+    }
+
+    // GPS distance on outdoor runs needs location access.
+    private func requestLocationIfNeeded() {
+        guard outdoor, locationManager.authorizationStatus == .notDetermined else { return }
+        locationManager.requestWhenInUseAuthorization()
     }
 
     private var infoRow: some View {
@@ -72,7 +94,7 @@ struct WorkoutDetailView: View {
                 .padding(.top, 4)
         } else {
             NavigationLink {
-                WorkoutActiveView(workout: workout)
+                WorkoutActiveView(workout: workout, outdoor: outdoor)
                     .navigationBarBackButtonHidden(true)
             } label: {
                 Label(

@@ -304,6 +304,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Couch25K;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Couch25K reads heart rate and distance during workouts";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Couch25K saves your workout to Health";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Couch25K uses GPS to measure distance on outdoor runs";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -339,6 +340,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Couch25K;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Couch25K reads heart rate and distance during workouts";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Couch25K saves your workout to Health";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Couch25K uses GPS to measure distance on outdoor runs";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (

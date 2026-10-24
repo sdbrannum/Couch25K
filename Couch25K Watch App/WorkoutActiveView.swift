@@ -1,4 +1,5 @@
 import SwiftUI
+import HealthKit
 
 struct WorkoutActiveView: View {
     @Environment(\.dismiss) var dismiss
@@ -15,9 +16,12 @@ struct WorkoutActiveView: View {
         return f
     }()
 
-    init(workout: Workout) {
+    init(workout: Workout, outdoor: Bool = false) {
         self.workout = workout
-        _workoutTracker = StateObject(wrappedValue: WorkoutTracker(exercises: workout.exercises))
+        _workoutTracker = StateObject(wrappedValue: WorkoutTracker(
+            exercises: workout.exercises,
+            locationType: outdoor ? .outdoor : .indoor
+        ))
     }
 
     private var exerciseTimeString: String {

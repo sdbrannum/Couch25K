@@ -7,6 +7,7 @@ import WatchKit
 class WorkoutTracker: NSObject, ObservableObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate {
     private let healthStore = HKHealthStore()
     private let exercises: [ExerciseItem]
+    private let locationType: HKWorkoutSessionLocationType
     private let countdownTimer: CountdownTimer
     private let totalWorkoutTime: TimeInterval
     private var workoutBuilder: HKLiveWorkoutBuilder?
@@ -36,8 +37,9 @@ class WorkoutTracker: NSObject, ObservableObject, HKWorkoutSessionDelegate, HKLi
         exercises[currentExerciseIdx]
     }
 
-    init(exercises: [ExerciseItem]) {
+    init(exercises: [ExerciseItem], locationType: HKWorkoutSessionLocationType = .indoor) {
         self.exercises = exercises
+        self.locationType = locationType
         totalWorkoutTime = exercises.reduce(0) { $0 + $1.duration }
         workoutTimeLeft = totalWorkoutTime
         countdownTimer = CountdownTimer(workoutTotalTime: totalWorkoutTime)
@@ -114,7 +116,7 @@ class WorkoutTracker: NSObject, ObservableObject, HKWorkoutSessionDelegate, HKLi
 
         let config = HKWorkoutConfiguration()
         config.activityType = .running
-        config.locationType = .indoor
+        config.locationType = locationType
 
         let session: HKWorkoutSession
         do {
